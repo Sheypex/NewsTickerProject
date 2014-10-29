@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html ng-app="ntpApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>NewsTickerProject</title>
+    <!----------------------------------------------------------------------------------------------------------------->
+    <!-- CSS -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="CSS/bootswatch_journal.css"/>
+    <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.css"/>
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css"/>
+    <!-- -´´- own -->
+    <link rel="stylesheet" href="CSS/ntpCss.css"/>
+</head>
+<body>
+<div class="navbar navbar-default" ng-controller="navCtrl">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" ui-sref="home">NewsTickerProject</a>
+    </div>
+    <div class="navbar-collapse collapse navbar-responsive-collapse">
+        <!--<ul class="nav navbar-nav">
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li class="dropdown-header">Dropdown header</li>
+                    <li><a href="#">Separated link</a></li>
+                    <li><a href="#">One more separated link</a></li>
+                </ul>
+            </li>
+        </ul>-->
+        <form name="searchForm" class="navbar-form navbar-left">
+            <div class="form-group">
+                <div class="input-group" ng-class="{}" ng-init="showError = false">
+                    <div ng-class="{'has-error': showError, 'has-feedback': showError}">
+                        <input type="search" name="searchTextInput" class="form-control col-lg-8"
+                               placeholder="Search"
+                               ng-model="searchText" required ng-change="searchValidate()" ng-blur="showError = false">
+                        <span ng-if="showError" class="glyphicon glyphicon-remove form-control-feedback"></span>
+                    </div>
+                    <span class="input-group-addon">In</span>
+                    <select class="form-control" ng-model="searchRange" ng-init="searchRange = 'Everything'">
+                        <option selected>Everything</option>
+                        <option>Current Category</option>
+                    </select>
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="submit"
+                                ng-click="searchValidTransition()">
+                            <!-- === ui-sref="search({query: searchText, searchRange: searchRange})" -->
+                            Submit <span class="fa fa-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container" ui-view="info"></div>
+<div class="container" ui-view="categories"></div>
+<div class="container" ui-view="subcategories"></div>
+<div class="container" ui-view="filters"></div>
+<div class="container" ui-view="articles"></div>
+
+<div class="container">
+    <div class="row">
+        <hr>
+        <div class="col-lg-8">
+                <span class="pull-left">No Copyright. No rights reserved. Use anything you might find useful if you so desire :)<br>
+                Credit goes to google.com! This site is completely based on their API.</span>
+        </div>
+        <div class="col-lg-4">
+            <span class="pull-right">Thanks for visiting</span>
+        </div>
+    </div>
+</div>
+<!--------------------------------------------------------------------------------------------------------------------->
+<!-- JS -->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/lodash/dist/lodash.js"></script>
+<script src="bower_components/restangular/dist/restangular.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/moment/moment.js"></script>
+<script src="bower_components/angular-moment/angular-moment.js"></script>
+<!-- -´´- own -->
+<script src="JS/ntpApp.js"></script>
+<script src="JS/ntpServices.js"></script>
+<script src="JS/ntpDirectives.js"></script>
+<script src="JS/ntpControllers.js"></script>
+</body>
+</html>
